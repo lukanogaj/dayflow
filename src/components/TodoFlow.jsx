@@ -1,9 +1,9 @@
 import TodoSection from "./TodoSection";
 import { mockTodos } from "../data/mockTodos";
-import { getTodayTodosSorted } from "../../../js/todos/selectors/getTodayTodosSorted";
-import { getOverdueTodosSorted } from "../../../js/todos/selectors/getOverdueTodosSorted";
-import { getFutureTodosSorted } from "../../../js/todos/selectors/getFutureTodosSorted";
-import { getCompletedTodosSorted } from "../../../js/todos/selectors/getCompletedTodosSorted";
+import { getTodayTodosSorted } from "../selectors/getTodayTodosSorted";
+import { getOverdueTodosSorted } from "../selectors/getOverdueTodosSorted";
+import { getFutureTodosSorted } from "../selectors/getFutureTodosSorted";
+import { getCompletedTodosSorted } from "../selectors/getCompletedTodosSorted";
 
 const TodoFlowTraining = () => {
 	const todayDate = new Date("2026-04-21T09:00:00");

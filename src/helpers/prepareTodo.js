@@ -1,4 +1,4 @@
-import { PRIORITY_ORDER } from "../constants/priorityOrder.js";
+import { PRIORITY_ORDER } from "../constants/todoStatus.js";
 import { normalizeToDay } from "./normalizeToDay.js";
 import { getTodoStatus } from "./getTodoStatus.js";
 export const prepareTodo = (todo, todayDate) => {
