@@ -1,11 +1,8 @@
+import "./index.css";
 import TodoFlow from "./components/TodoFlow";
 
 const App = () => {
-	return (
-		<div>
-			<TodoFlow />
-		</div>
-	);
+	return <TodoFlow />;
 };
 
 export default App;

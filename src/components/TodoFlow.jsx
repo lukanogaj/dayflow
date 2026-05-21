@@ -13,23 +13,32 @@ const TodoFlowTraining = () => {
 	const completedTodos = getCompletedTodosSorted(mockTodos);
 
 	const todoSections = [
-		{ heading: "Today Todos", todos: todayTodos },
-		{ heading: "Future Todos", todos: futureTodos },
-		{ heading: "Overdue Todos", todos: overdueTodos },
-		{ heading: "Completed Todos", todos: completedTodos },
+		{ heading: "Today", todos: todayTodos },
+		{ heading: "Future", todos: futureTodos },
+		{ heading: "Overdue", todos: overdueTodos },
+		{ heading: "Completed", todos: completedTodos },
 	];
 
 	return (
-		<div>
-			<h1>Todo Flow Training </h1>
-			{todoSections.map((section) => (
-				<TodoSection
-					heading={section.heading}
-					todos={section.todos}
-					key={section.heading}
-				/>
-			))}
-		</div>
+		<main className='app-shell'>
+			<header className='app-header'>
+				<p className='eyebrow'>Dayflow</p>
+				<h1>Todo Flow Training</h1>
+				<p className='app-subtitle'>
+					Clean todo pipeline with selectors, helpers, sorting and tests.
+				</p>
+			</header>
+
+			<div className='sections-grid'>
+				{todoSections.map((section) => (
+					<TodoSection
+						heading={section.heading}
+						todos={section.todos}
+						key={section.heading}
+					/>
+				))}
+			</div>
+		</main>
 	);
 };
 
