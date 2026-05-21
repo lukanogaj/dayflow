@@ -3,6 +3,7 @@ export const TODO_STATUS = {
 	FUTURE: "future",
 	OVERDUE: "overdue",
 	COMPLETED: "completed",
+	NO_DATE: "noDate",
 };
 
 export const PRIORITY_ORDER = {
