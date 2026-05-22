@@ -1,4 +1,5 @@
 import TodoSection from "./TodoSection";
+import Footer from "./Footer";
 import { mockTodos } from "../data/mockTodos";
 import { getTodayTodosSorted } from "../selectors/getTodayTodosSorted";
 import { getOverdueTodosSorted } from "../selectors/getOverdueTodosSorted";
@@ -38,6 +39,7 @@ const TodoFlowTraining = () => {
 					/>
 				))}
 			</div>
+			<Footer />
 		</main>
 	);
 };

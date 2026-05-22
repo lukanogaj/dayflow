@@ -132,6 +132,53 @@ h1 {
 	font-size: 0.95rem;
 }
 
+.app-footer {
+	margin-top: 4rem;
+	padding-top: 2rem;
+	border-top: 1px solid rgba(148, 163, 184, 0.2);
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 2rem;
+	color: #94a3b8;
+}
+
+.footer-label {
+	margin: 0 0 0.5rem;
+	color: #e5e7eb;
+	font-size: 0.9rem;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+}
+
+.app-footer p {
+	margin: 0.25rem 0;
+	font-size: 0.95rem;
+}
+
+.footer-links {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+}
+
+.footer-links a {
+	color: #a5b4fc;
+	font-weight: 700;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+	color: #e5e7eb;
+}
+
+@media (max-width: 700px) {
+	.app-footer {
+		flex-direction: column;
+	}
+}
+
 @media (max-width: 48rem) {
 	.app-shell {
 		padding: 2rem 0;
