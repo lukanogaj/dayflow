@@ -23,7 +23,7 @@ const TodoFlowTraining = () => {
 	return (
 		<main className='app-shell'>
 			<header className='app-header'>
-				<p className='eyebrow'>Dayflow</p>
+				<p className='app-label'>Dayflow</p>
 				<h1>Todo Flow Training</h1>
 				<p className='app-subtitle'>
 					Clean todo pipeline with selectors, helpers, sorting and tests.
