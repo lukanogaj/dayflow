@@ -1,11 +1,12 @@
 import TodoSection from "./TodoSection";
 import Footer from "./Footer";
 import { mockTodos } from "../data/mockTodos";
-import { getTodayTodosSorted } from "../selectors/getTodayTodosSorted";
-import { getOverdueTodosSorted } from "../selectors/getOverdueTodosSorted";
-import { getFutureTodosSorted } from "../selectors/getFutureTodosSorted";
-import { getCompletedTodosSorted } from "../selectors/getCompletedTodosSorted";
-
+import {
+	getTodayTodosSorted,
+	getOverdueTodosSorted,
+	getFutureTodosSorted,
+	getCompletedTodosSorted,
+} from "../selectors";
 const TodoFlowTraining = () => {
 	const todayDate = new Date("2026-04-21T09:00:00");
 	const todayTodos = getTodayTodosSorted(mockTodos, todayDate);
