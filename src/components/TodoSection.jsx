@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-const TodoSection = ({ todos, heading }) => {
+const TodoSection = ({ todos, heading, emptyMessage }) => {
 	return (
 		<section className='todo-section'>
 			<div className='section-header'>
@@ -9,7 +9,7 @@ const TodoSection = ({ todos, heading }) => {
 			</div>
 
 			{todos.length === 0 ? (
-				<p className='empty-state'>No todos yet</p>
+				<p className='empty-state'>{emptyMessage}</p>
 			) : (
 				<ul className='todo-list'>
 					{todos.map((todo) => (

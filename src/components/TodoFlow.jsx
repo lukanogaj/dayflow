@@ -14,12 +14,23 @@ const TodoFlowTraining = () => {
 	const completedTodos = getCompletedTodosSorted(mockTodos);
 
 	const todoSections = [
-		{ heading: "Today", todos: todayTodos },
-		{ heading: "Future", todos: futureTodos },
-		{ heading: "Overdue", todos: overdueTodos },
-		{ heading: "Completed", todos: completedTodos },
+		{
+			heading: "Overdue",
+			todos: overdueTodos,
+			emptyMessage: "No Overdue Tasks",
+		},
+		{ heading: "Today", todos: todayTodos, emptyMessage: "No tasks for today" },
+		{
+			heading: "Future",
+			todos: futureTodos,
+			emptyMessage: "No upcoming tasks",
+		},
+		{
+			heading: "Completed",
+			todos: completedTodos,
+			emptyMessage: "No completed tasks",
+		},
 	];
-
 	return (
 		<main className='app-shell'>
 			<header className='app-header'>
