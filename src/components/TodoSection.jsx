@@ -1,6 +1,12 @@
 import TodoItem from "./TodoItem";
 
-const TodoSection = ({ todos, heading, emptyMessage }) => {
+const TodoSection = ({
+	todos,
+	heading,
+	emptyMessage,
+	onComplete,
+	updatingTodoId,
+}) => {
 	return (
 		<section className='todo-section'>
 			<div className='section-header'>
@@ -16,6 +22,8 @@ const TodoSection = ({ todos, heading, emptyMessage }) => {
 						<TodoItem
 							todo={todo}
 							key={todo.id}
+							onComplete={onComplete}
+							updatingTodoId={updatingTodoId}
 						/>
 					))}
 				</ul>

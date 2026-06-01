@@ -2,15 +2,17 @@ import TodoSection from "./TodoSection";
 import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import { fetchTodos } from "../api/fetchTodos";
+import { completeTodo } from "../api/fetchTodos";
 import { getTodayTodosSorted } from "../selectors/getTodayTodosSorted";
 import { getOverdueTodosSorted } from "../selectors/getOverdueTodosSorted";
 import { getFutureTodosSorted } from "../selectors/getFutureTodosSorted";
 import { getCompletedTodosSorted } from "../selectors/getCompletedTodosSorted";
 
-const TodoFlowTraining = () => {
+const TodoFlow = () => {
 	const [todos, setTodos] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
+	const [updatingTodoId, setUpdatingTodoId] = useState();
 
 	const todayDate = new Date("2026-04-21T09:00:00");
 	const todayTodos = getTodayTodosSorted(todos, todayDate);
@@ -34,6 +36,22 @@ const TodoFlowTraining = () => {
 
 		loadTodos();
 	}, []);
+
+	const handleComplete = async (id) => {
+		setUpdatingTodoId(id);
+		try {
+			const updatedTodo = await completeTodo(id);
+
+			setTodos((prevTodos) =>
+				prevTodos.map((todo) => (todo.id === id ? updatedTodo : todo)),
+			);
+		} catch (error) {
+			console.error(error);
+			setError("Failed to complete todo");
+		} finally {
+			setUpdatingTodoId(null);
+		}
+	};
 
 	const todoSections = [
 		{
@@ -77,6 +95,8 @@ const TodoFlowTraining = () => {
 						todos={section.todos}
 						emptyMessage={section.emptyMessage}
 						key={section.heading}
+						onComplete={handleComplete}
+						updatingTodoId={updatingTodoId}
 					/>
 				))}
 			</div>
@@ -85,4 +105,4 @@ const TodoFlowTraining = () => {
 	);
 };
 
-export default TodoFlowTraining;
+export default TodoFlow;
