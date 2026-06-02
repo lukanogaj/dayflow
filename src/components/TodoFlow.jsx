@@ -3,22 +3,19 @@ import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import { fetchTodos } from "../api/fetchTodos";
 import { completeTodo } from "../api/fetchTodos";
-import { getTodayTodosSorted } from "../selectors/getTodayTodosSorted";
-import { getOverdueTodosSorted } from "../selectors/getOverdueTodosSorted";
-import { getFutureTodosSorted } from "../selectors/getFutureTodosSorted";
-import { getCompletedTodosSorted } from "../selectors/getCompletedTodosSorted";
+import { useTodoSections } from "../hooks/useTodoSections";
+// import { getTodayTodosSorted } from "../selectors/getTodayTodosSorted";
+// import { getOverdueTodosSorted } from "../selectors/getOverdueTodosSorted";
+// import { getFutureTodosSorted } from "../selectors/getFutureTodosSorted";
+// import { getCompletedTodosSorted } from "../selectors/getCompletedTodosSorted";
 
 const TodoFlow = () => {
 	const [todos, setTodos] = useState([]);
-	const [loading, setLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
 	const [updatingTodoId, setUpdatingTodoId] = useState();
 
-	const todayDate = new Date("2026-04-21T09:00:00");
-	const todayTodos = getTodayTodosSorted(todos, todayDate);
-	const futureTodos = getFutureTodosSorted(todos, todayDate);
-	const overdueTodos = getOverdueTodosSorted(todos, todayDate);
-	const completedTodos = getCompletedTodosSorted(todos);
+	const todoSections = useTodoSections(todos);
 
 	useEffect(() => {
 		const loadTodos = async () => {
@@ -30,7 +27,7 @@ const TodoFlow = () => {
 				console.error(error);
 				setError("Failed to load todos");
 			} finally {
-				setLoading(false);
+				setIsLoading(false);
 			}
 		};
 
@@ -53,25 +50,7 @@ const TodoFlow = () => {
 		}
 	};
 
-	const todoSections = [
-		{
-			heading: "Overdue",
-			todos: overdueTodos,
-			emptyMessage: "No Overdue Tasks",
-		},
-		{ heading: "Today", todos: todayTodos, emptyMessage: "No tasks for today" },
-		{
-			heading: "Future",
-			todos: futureTodos,
-			emptyMessage: "No upcoming tasks",
-		},
-		{
-			heading: "Completed",
-			todos: completedTodos,
-			emptyMessage: "No completed tasks",
-		},
-	];
-	if (loading) {
+	if (isLoading) {
 		return <p>Loading todos...</p>;
 	}
 
@@ -89,12 +68,12 @@ const TodoFlow = () => {
 			</header>
 
 			<div className='sections-grid'>
-				{todoSections.map((section) => (
+				{todoSections.map(({ heading, todos, emptyMessage }) => (
 					<TodoSection
-						heading={section.heading}
-						todos={section.todos}
-						emptyMessage={section.emptyMessage}
-						key={section.heading}
+						heading={heading}
+						todos={todos}
+						emptyMessage={emptyMessage}
+						key={heading}
 						onComplete={handleComplete}
 						updatingTodoId={updatingTodoId}
 					/>
