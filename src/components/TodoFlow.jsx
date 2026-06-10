@@ -1,19 +1,14 @@
 import TodoSection from "./TodoSection";
 import Footer from "./Footer";
 import { useEffect, useState } from "react";
-import { fetchTodos } from "../api/fetchTodos";
-import { completeTodo } from "../api/fetchTodos";
+import { fetchTodos, completeTodo } from "../api/fetchTodos";
 import { useTodoSections } from "../hooks/useTodoSections";
-// import { getTodayTodosSorted } from "../selectors/getTodayTodosSorted";
-// import { getOverdueTodosSorted } from "../selectors/getOverdueTodosSorted";
-// import { getFutureTodosSorted } from "../selectors/getFutureTodosSorted";
-// import { getCompletedTodosSorted } from "../selectors/getCompletedTodosSorted";
 
 const TodoFlow = () => {
 	const [todos, setTodos] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
-	const [updatingTodoId, setUpdatingTodoId] = useState();
+	const [updatingTodoId, setUpdatingTodoId] = useState(null);
 
 	const todoSections = useTodoSections(todos);
 
